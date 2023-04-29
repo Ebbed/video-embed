@@ -1,7 +1,11 @@
-/* Add this CSS to your existing CSS file or create a new one and link it to your HTML */
-
-/* Set a max-width for the container to prevent it from becoming too wide */
-.video-container {
-	max-width: 800px;
-	margin: 0 auto; /* Center the container horizontally */
+#video-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+#video-iframe {
+  width: 1280px;
+  height: 720px;
+  border: none;
 }
