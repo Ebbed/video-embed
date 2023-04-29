@@ -3,51 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Embed</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-    .container {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100%;
-      overflow: hidden;
     }
-    .video {
+    #video-container {
+      position: relative;
       width: 100%;
       height: 100%;
     }
-    .video iframe {
+    #video-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      margin: 0;
-      padding: 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="video">
-      <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
-    </div>
+  <div id="video-container">
+    <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
   </div>
-  <script>
-    function updateIframeSize() {
-      var message = {
-        type: 'updateIframeSize',
-        data: {
-          width: '100%',
-          height: document.documentElement.clientHeight + 'px'
-        }
-      };
-      window.parent.postMessage(message, '*');
-    }
-
-    setTimeout(updateIframeSize, 1000);
-  </script>
 </body>
 </html>
