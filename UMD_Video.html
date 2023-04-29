@@ -2,60 +2,15 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=2">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    
-    #video-container {
-      position: relative;
-      height: 100%;
-      width: 100%;
-    }
-    
-    #video-iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100%;
-      width: 177.77vw;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Embed</title>
+  <link rel="stylesheet" href="styledvideo.css">
 </head>
 <body>
-  <div id="video-container">
-    <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
+  <div class="video-wrapper">
+    <div class="video">
+      <iframe src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
-  <script>
-    function resizeIframe() {
-      var container = document.getElementById("video-container");
-      var iframe = document.getElementById("video-iframe");
-      
-      var containerWidth = container.clientWidth;
-      var containerHeight = container.clientHeight;
-      
-      var aspectRatio = 16 / 9; // standard 16:9 aspect ratio
-      var iframeWidth = containerHeight * aspectRatio;
-      var iframeHeight = containerHeight;
-      
-      if (iframeWidth > containerWidth) {
-        iframeWidth = containerWidth;
-        iframeHeight = containerWidth / aspectRatio;
-      }
-      
-      iframe.style.width = iframeWidth + "px";
-      iframe.style.height = iframeHeight + "px";
-    }
-    
-    resizeIframe();
-    
-    window.addEventListener("resize", function() {
-      resizeIframe();
-    });
-  </script>
 </body>
 </html>
