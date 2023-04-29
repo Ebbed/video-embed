@@ -1,0 +1,19 @@
+insights-text-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ql-container {
+  height: 100%;
+}
+
+.ql-editor {
+  height: 100%;
+}
+
+.ql-video {
+  height: 100%;
+  width: 100%;
+}
