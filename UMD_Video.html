@@ -30,5 +30,19 @@
   <div id="video-container">
     <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
   </div>
+  <script>
+    function updateIframeSize() {
+      var message = {
+        type: 'updateIframeSize',
+        data: {
+          width: '1280px',
+          height: '720px'
+        }
+      };
+      window.parent.postMessage(message, '*');
+    }
+
+    setTimeout(updateIframeSize, 1000);
+  </script>
 </body>
 </html>
