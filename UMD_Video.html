@@ -7,17 +7,22 @@
     body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
     }
-    #video-iframe {
-      width: 100% !important;
-      height: 100% !important;
-    }
+    
     #video-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+    
+    #video-iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100%;
+      width: 177.77vw;
     }
   </style>
 </head>
@@ -26,18 +31,31 @@
     <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
   </div>
   <script>
-    function updateIframeSize() {
-      var message = {
-        type: 'updateIframeSize',
-        data: {
-          width: '100%',
-          height: '100%'
-        }
-      };
-      window.parent.postMessage(message, '*');
+    function resizeIframe() {
+      var container = document.getElementById("video-container");
+      var iframe = document.getElementById("video-iframe");
+      
+      var containerWidth = container.clientWidth;
+      var containerHeight = container.clientHeight;
+      
+      var aspectRatio = 16 / 9; // standard 16:9 aspect ratio
+      var iframeWidth = containerHeight * aspectRatio;
+      var iframeHeight = containerHeight;
+      
+      if (iframeWidth > containerWidth) {
+        iframeWidth = containerWidth;
+        iframeHeight = containerWidth / aspectRatio;
+      }
+      
+      iframe.style.width = iframeWidth + "px";
+      iframe.style.height = iframeHeight + "px";
     }
-
-    setTimeout(updateIframeSize, 1000);
+    
+    resizeIframe();
+    
+    window.addEventListener("resize", function() {
+      resizeIframe();
+    });
   </script>
 </body>
 </html>
