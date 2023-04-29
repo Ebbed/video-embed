@@ -12,20 +12,18 @@
 </head>
 <body>
   <div>
-    <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" width="800" height="450" allowfullscreen></iframe>
+    <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
   </div>
   <script>
     function updateIframeSize() {
-      var iframe = document.getElementById('video-iframe');
-      if (iframe) {
-        iframe.style.width = '100%';
-        iframe.style.height = '450px';
-        var insightsIframe = window.frameElement;
-        if (insightsIframe) {
-          insightsIframe.style.height = '450px';
-          insightsIframe.style.width = '100%';
+      var message = {
+        type: 'updateIframeSize',
+        data: {
+          width: '100%',
+          height: '450px'
         }
-      }
+      };
+      window.parent.postMessage(message, '*');
     }
 
     setTimeout(updateIframeSize, 1000);
