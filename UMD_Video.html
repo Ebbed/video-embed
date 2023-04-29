@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="styledvideo.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		#video-container {
+			position: relative;
+			padding-bottom: 56.25%;
+			padding-top: 30px;
+			height: 0;
+			overflow: hidden;
+		}
+
+		#video-container iframe,
+		#video-container object,
+		#video-container embed {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
 </head>
 <body>
-  <div id="card-container">
-    <div id="video-wrapper">
-      <iframe id="video-iframe" src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-  <script>
-    function resizeIframe() {
-      var iframe = document.getElementById("video-iframe");
-      var wrapper = document.getElementById("video-wrapper");
-      var container = document.getElementById("card-container");
-      var width = container.offsetWidth;
-      var height = container.offsetHeight;
-      var aspectRatio = 16 / 9;
-      if (height / aspectRatio > width) {
-        iframe.style.width = width + "px";
-        iframe.style.height = width / aspectRatio + "px";
-      } else {
-        iframe.style.height = height + "px";
-        iframe.style.width = height * aspectRatio + "px";
-      }
-      wrapper.style.width = iframe.offsetWidth + "px";
-      wrapper.style.height = iframe.offsetHeight + "px";
-    }
+	<div id="video-container">
+		<iframe src="https://streamable.com/e/9c1k6g" frameborder="0" allowfullscreen></iframe>
+	</div>
+	<script>
+		function resizeVideo() {
+			var container = document.getElementById('video-container');
+			var containerWidth = container.clientWidth;
+			var newHeight = containerWidth * 0.5625;
+			container.style.height = newHeight + 'px';
+		}
 
-    window.onload = function() {
-      resizeIframe();
-    };
+		window.onload = function() {
+			resizeVideo();
+		};
 
-    window.addEventListener("resize", function() {
-      resizeIframe();
-    });
-  </script>
+		window.onresize = function() {
+			resizeVideo();
+		};
+	</script>
 </body>
 </html>
