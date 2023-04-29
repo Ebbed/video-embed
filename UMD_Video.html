@@ -20,9 +20,15 @@
       if (iframe) {
         iframe.style.width = '100%';
         iframe.style.height = '450px';
+        var insightsIframe = window.frameElement;
+        if (insightsIframe) {
+          insightsIframe.style.height = '450px';
+          insightsIframe.style.width = '100%';
+        }
       }
     }
 
     setTimeout(updateIframeSize, 1000);
   </script>
 </body>
+</html>
